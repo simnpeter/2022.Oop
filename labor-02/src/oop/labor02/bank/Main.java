@@ -15,6 +15,7 @@ public class Main {
             System.out.println("You don't have sufficient founds for this withdraw");
         }
         System.out.println(account1.getAccountNumber()+ ": "+ account1.getBalance());
+        System.out.println(account1.getAccountNumber());
     }
 
 }
