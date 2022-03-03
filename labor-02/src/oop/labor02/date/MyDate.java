@@ -22,10 +22,6 @@ public class MyDate {
         return day;
     }
     public String toString(){
-        String y, m, d;
-        y=String.valueOf(year);
-        m=String.valueOf(month);
-        d=String.valueOf(day);
-        return y + "." + m + "." +d;
+        return getYear() + "." + getMonth() + "." + getDay();
     }
 }
