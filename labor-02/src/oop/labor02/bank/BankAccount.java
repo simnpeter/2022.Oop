@@ -12,10 +12,10 @@ public class BankAccount {
         this.balance = 0;
     }
     public double getBalance(){
-        return this.balance;
+        return balance;
     }
     public String getAccountNumber(){
-        return this.accountNumber;
+        return accountNumber;
     }
     public void deposit(double amount) {
         if(amount>0)

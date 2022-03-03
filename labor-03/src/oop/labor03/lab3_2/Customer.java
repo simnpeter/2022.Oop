@@ -2,6 +2,7 @@ package oop.labor03.lab3_2;
 
 import oop.labor03.lab3_1.BankAccount;
 
+
 public class Customer {
 
     public static final int MAX_ACCOUNT=10;
@@ -52,23 +53,32 @@ public class Customer {
     }
 
     public void closeAccount(String accountNumber){
+        int siker=0;
         for (int i = 0; i < numAccounts; i++) {
             if(accounts[i].getAccountNumber().equals(accountNumber)){
-                accounts[i]=null;
+                accounts[i] = null;
+                accounts[i] = accounts[numAccounts-1];
+                accounts[numAccounts-1] = null;
                 --numAccounts;
+                ++siker;
                 break;
             }
         }
-    }
-
-    public String toString(String accountNumber){
-        for (int i = 0; i < numAccounts; i++) {
-            if(accounts[i].getAccountNumber().equals(accountNumber)){
-                return this.firstName + " " + this.lastName + "\n" + this.accounts[i];
-            }
+        if (siker == 0){
+            System.out.println("ERROR invalid account number\n ");
         }
-        return this.firstName + " " + this.lastName + "\n" + "This person do not have an account";
     }
 
+    public String toString() {
+        if (numAccounts==0){
+            return firstName + ' ' + lastName + "\n User do not have an account\n";
+        }
+        StringBuffer result = new StringBuffer();
+        result.append(firstName + ' ' + lastName + " accounts:\n");
+        for (int i = 0; i < numAccounts; ++i) {
+            result.append("\t" + accounts[i].toString() + "\n");
+        }
+        return result.toString();
+    }
 }
 
