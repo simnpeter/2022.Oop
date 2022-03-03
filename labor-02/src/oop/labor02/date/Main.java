@@ -8,9 +8,9 @@ public class Main {
         MyDate date[] = new MyDate[1000];
         Random rand = new Random();
         for (int i = 0; i < 1000 ; i++) {
-            year =  1500 + rand.nextInt(2022-1500);
+            year =  (-50) + rand.nextInt(2069-(-50));
             month = 1 + rand.nextInt(13-1);
-            day = 1 + rand.nextInt(28);
+            day = 1 + rand.nextInt(32);
             date[i] = new MyDate(year, month, day);
             if(DateUtil.isValidDate(year, month, day)) {
                 System.out.println(date[i].getYear());
