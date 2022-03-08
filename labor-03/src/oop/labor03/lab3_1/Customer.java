@@ -2,7 +2,7 @@ package oop.labor03.lab3_1;
 
 public class Customer {
 
-    private String firstName;
+    private final String firstName;
     private String lastName;
     private BankAccount account;
 
@@ -28,20 +28,31 @@ public class Customer {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String lastName1) {
+        lastName = lastName1;
     }
 
     public void closeAccount(){
-        this.account=null;
+        account=null;
     }
 
     public String toString(){
         if(account==null){
-            return this.firstName + " " + this.lastName + "\n" + "This person do not have an account";
+            return firstName + " " + lastName + "\n" + "This person do not have an account\n";
         }
-        return this.firstName + " " + this.lastName + "\n" + this.account;
+        return firstName + " " + lastName + "\n" + account + "\n";
     }
 
+    public void divorce(Customer customer){
+        System.out.println(firstName + " divorced " + customer.firstName + "\n");
+        customer.closeAccount();
+        customer.setLastName("WHITE");
+    }
+
+    public void marry(Customer customer){
+        System.out.println(firstName + " married " + customer.firstName + "\n");
+        setAccount(customer.getAccount());
+        setLastName(customer.lastName);
+    }
 }
 

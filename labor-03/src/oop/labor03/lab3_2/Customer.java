@@ -17,15 +17,12 @@ public class Customer {
         this.lastName=lastname;
     }
 
-
-
     public void addAccount(BankAccount account){
         if(numAccounts<MAX_ACCOUNT){
             this.accounts[numAccounts]=account;
             ++numAccounts;
         }
     }
-
 
     public BankAccount getAccount(String accountNumber){
         for (int i = 0; i < numAccounts; i++) {
@@ -36,13 +33,9 @@ public class Customer {
         return null;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
+    public String getFirstName() {return firstName;}
 
-    public String getLastName() {
-        return lastName;
-    }
+    public String getLastName() {return lastName;}
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -65,16 +58,16 @@ public class Customer {
             }
         }
         if (siker == 0){
-            System.out.println("ERROR invalid account number\n ");
+            System.out.println("ERROR invalid account number:" + accountNumber+ "\n");
         }
     }
 
     public String toString() {
         if (numAccounts==0){
-            return firstName + ' ' + lastName + "\n User do not have an account\n";
+            return getFirstName() + ' ' + getLastName() + "\n User do not have an account\n";
         }
         StringBuffer result = new StringBuffer();
-        result.append(firstName + ' ' + lastName + " accounts:\n");
+        result.append(getFirstName() + ' ' + getLastName() + " accounts:\n");
         for (int i = 0; i < numAccounts; ++i) {
             result.append("\t" + accounts[i].toString() + "\n");
         }
