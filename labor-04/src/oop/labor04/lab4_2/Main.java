@@ -1,6 +1,5 @@
 package oop.labor04.lab4_2;
 
-import oop.labor04.lab4_1.Person;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,9 +8,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Person> persons = readFromCSVFile("lab4_2_be.csv");
-        for (int i = 0; i < persons.size(); i++) {
-            System.out.println(persons.get(i));
+        ArrayList<Customer> customers = readFromCSVFile("lab4_2_be.csv");
+        for (Customer customer : customers) {
+            System.out.println(customer);
         }
     }
     public static ArrayList<Customer> readFromCSVFile(String fileName) {
@@ -31,7 +30,10 @@ public class Main {
                     customers.add(new Customer(firstName, lastName));
                 }
                 else if(type.equals("Account")){
-
+                    String id = items[1].trim();
+                    int money = Integer.parseInt(items[2].trim());
+                    customers.get(customers.size()-1).addAccount(new BankAccount(id));
+                    customers.get(customers.size()-1).getAccount(id).deposit(money);
                 }
                 // Convert String → int: Integer.parseInt( String)
 

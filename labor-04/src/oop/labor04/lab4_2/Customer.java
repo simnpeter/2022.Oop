@@ -57,10 +57,10 @@ public class Customer {
         if (accounts.size()==0){
             return getFirstName() + ' ' + getLastName() + "\n User do not have an account\n";
         }
-        StringBuffer result = new StringBuffer();
-        result.append(getFirstName() + ' ' + getLastName() + " accounts:\n");
+        StringBuilder result = new StringBuilder();
+        result.append(getFirstName()).append(' ').append(getLastName()).append(" accounts:\n");
         for (BankAccount item : accounts) {
-            result.append("\t" + item.toString() + "\n");
+            result.append("\t").append(item.toString()).append("\n");
         }
         return result.toString();
     }
