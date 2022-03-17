@@ -24,7 +24,7 @@ public class MyArray {
     public MyArray(double[] elements){
         this.length = elements.length;
         this.elements = new double[elements.length];
-        System.arraycopy(elements, 0, this.elements, 0, this.length);
+        System.arraycopy(elements, 0, this.elements, 0, length);
     }
     public MyArray(String fileName){
         File file = new File(fileName);
