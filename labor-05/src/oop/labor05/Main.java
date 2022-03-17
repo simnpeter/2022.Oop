@@ -8,38 +8,54 @@ import oop.labor05.models.Training;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        int n=4;
         ArrayList<Course> courses = readCourses("courses.csv");
         for (int i = 0; i < courses.size(); i++) {
-            System.out.println(courses.get(i));
+            //System.out.println(courses.get(i));
         }
         for (Course cours : courses){
-            System.out.println(cours);
+            //System.out.println(cours);
         }
         ArrayList<Student> students = readStudents("students.csv");
         for (Student student : students){
-            System.out.println(student);
-
+            //System.out.println(student);
         }
-        Training oop = new Training(courses.get(0), new MyDate(2022, 3, 21), new MyDate(2022, 3, 25), 1500);
-
-        oop.printToFile();
-
-        for(Course c : courses){
+        /*Training oop = new Training(courses.get(0), new MyDate(2022, 3, 21), new MyDate(2022, 3, 25), 1500);
+        //System.out.println(students.get(2));
+        for(Student stud : students) {
+            oop.enroll(stud);
+        }
+        System.out.println(oop);
+        oop.printToFile();*/
+        ArrayList<Training> trainings = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < n ; i++) {
             // uj trainning letrehozas
-            Training training = new Training();
-            while(training.numEnrolled()<10){
+            trainings.add(new Training(courses.get(i), new MyDate(2022,3,21), new MyDate(2022,6,25), 1000+random.nextInt(2000-1000)));
+            while(trainings.get(i).numEnrolled()<10){
                 //random hozzaadas a traininghez
+                trainings.get(i).enroll(students.get(random.nextInt(students.size())));
             }
-            training.printToFile();
+            //training.printToFile();
+        }
+        for (Student student :students){
+            System.out.println(student.getLastName()+" "+student.getFirstName());
+            for (int i = 0; i < n; i++) {
+                if(trainings.get(i).findStudentById(student.getID())!=null){
+                    System.out.println("\t"+trainings.get(i).getCourse().getName()+", "+trainings.get(i).getCourse().getDescription());
+                }
+            }
+            System.out.println();
         }
     }
 
     private static ArrayList<Course> readCourses(String filename){
-        ArrayList<Course> courses = new ArrayList<Course>();
+        ArrayList<Course> courses = new ArrayList<>();
         try(Scanner scanner = new Scanner(new File(filename))){
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine();
@@ -59,7 +75,7 @@ public class Main {
     }
 
     private static ArrayList<Student> readStudents(String filename){
-        ArrayList<Student> students = new ArrayList<Student>();
+        ArrayList<Student> students = new ArrayList<>();
         try(Scanner scanner = new Scanner(new File(filename))){
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine();

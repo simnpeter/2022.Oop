@@ -12,7 +12,7 @@ public class Training {
     private final MyDate startDate;
     private final MyDate endDate;
     private final double pricePerStudent;
-    private ArrayList<Student> enrolledStudents;
+    private ArrayList<Student> enrolledStudents = new ArrayList<>();
 
     public Training(Course course, MyDate startDate, MyDate endDate, double pricePerStudent) {
         this.course = course;
@@ -50,18 +50,28 @@ public class Training {
     public void printToFile(){
         String fileName = String.format("%s_%s_%s.csv", course.getName(), startDate, endDate);
         try(PrintStream printStream = new PrintStream(fileName)) {
-            printStream.println(this);
+            /*printStream.println("\nCourse name: "+course.getName()+"\nStart Date: "+startDate+"\nEnd Date: "+endDate+
+                    "\nPrice: "+pricePerStudent+"\nStudents: ");
+            for (Student stud: enrolledStudents){
+                printStream.println(stud);
+            }*/
+            printStream.println();
         }catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
+    @Override
     public String toString() {
-        return "course: " + course +
-                "startDate: " + startDate +
-                "endDate: " + endDate +
-                "pricePerStudent: " + pricePerStudent +
-                "enrolledStudents: " + enrolledStudents;
+        StringBuilder result = new StringBuilder();
+        result.append("Training{\n").append("\t\tcourse= ").append(course.getName()).append(", description= " )
+                .append(course.getDescription()).append(", numHours= ").append(course.getNumHours())
+                .append("\n\t\tstartDate= ").append(startDate).append("\n\t\tendDate= ").append(endDate).append("\n");
+        for (Student item : enrolledStudents) {
+            result.append("\t\t\t\tID= ").append(item.getID()).append(", firstName= ").append(item.getFirstName()).append(", lastName= ").append(item.getLastName()).append("\n");
+        }
+        result.append("}");
+        return result.toString();
     }
 
     public void unEnroll(String ID){
