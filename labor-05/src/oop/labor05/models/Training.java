@@ -50,11 +50,11 @@ public class Training {
     public void printToFile(){
         String fileName = String.format("%s_%s_%s.csv", course.getName(), startDate, endDate);
         try(PrintStream printStream = new PrintStream(fileName)) {
-            /*printStream.println("\nCourse name: "+course.getName()+"\nStart Date: "+startDate+"\nEnd Date: "+endDate+
+            printStream.println("\nCourse name: "+course.getName()+"\nStart Date: "+startDate+"\nEnd Date: "+endDate+
                     "\nPrice: "+pricePerStudent+"\nStudents: ");
             for (Student stud: enrolledStudents){
                 printStream.println(stud);
-            }*/
+            }
             printStream.println();
         }catch (FileNotFoundException e) {
             e.printStackTrace();

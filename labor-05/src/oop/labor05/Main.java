@@ -41,7 +41,8 @@ public class Main {
                 //random hozzaadas a traininghez
                 trainings.get(i).enroll(students.get(random.nextInt(students.size())));
             }
-            //training.printToFile();
+            trainings.get(i).printToFile();
+            System.out.println(trainings.get(i));
         }
         for (Student student :students){
             System.out.println(student.getLastName()+" "+student.getFirstName());
