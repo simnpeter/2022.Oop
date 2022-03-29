@@ -20,11 +20,19 @@ public class Main {
         Erroristak.add(new Customer("Simo","Robert-Barna"));
         Erroristak.add(new Customer("Szoverfi","Daniel"));
         Erroristak.add(new Customer("Szentgyorgyi","Bernad-Krisztian"));
-        Erroristak.add(new Customer("Simon", "Peter"));
+        Erroristak.add(new Customer("Simon", "Peter"));/*
         for (Customer Cust: Erroristak) {
             for (int i = 0; i < rand.nextInt(5); i++) {
                 Cust.addAccount(new BankAccount());
             }
-        }
+        }*/
+        Bank bank = new Bank("OTP");
+        bank.addCustomer(Erroristak.get(0));
+        bank.addCustomer(Erroristak.get(2));
+        bank.getCustomer(0).addAccount(new BankAccount());
+        bank.getCustomer(0).addAccount(new BankAccount());
+        bank.getCustomer(1).addAccount(new BankAccount());
+        bank.getCustomer(1).addAccount(new BankAccount());
+
     }
 }
