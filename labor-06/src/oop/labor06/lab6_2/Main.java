@@ -1,9 +1,13 @@
 package oop.labor06.lab6_2;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public class Main {
 
-    public static void main(String[] args){
-        double[][] d = { { 1, 2, 3 }, { 4, 5, 6 }, { 9, 1, 3} };
+   // public static void main(String[] args){
+        /*double[][] d = { { 1, 2, 3 }, { 4, 5, 6 }, { 9, 1, 3} };
         Matrix m0 = new Matrix(d);
         System.out.println("m0 rows: " + m0.getRows()+", cols: " + m0.getColumns());
         System.out.println("m0: ");
@@ -31,6 +35,15 @@ public class Main {
         System.out.println("Product: m1 * m3");
         Matrix.multiply(m1, m3).printMatrix();
         System.out.println("Transpose(m3)");
-        Matrix.transpose( m3 ).printMatrix();
+        Matrix.transpose( m3 ).printMatrix();*/
+
+    //}
+    public static void main(String[] args) throws IOException
+    {
+        Path fileName = Path.of("C:\\Users\\SP\\IdeaProjects\\2022.Oop\\labor-06\\demo.txt");
+
+
+        String actual = Files.readString(fileName);
+        System.out.println(actual);
     }
 }
