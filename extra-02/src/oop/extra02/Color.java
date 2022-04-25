@@ -1,4 +1,4 @@
-package oop.extra01;
+package oop.extra02;
 
 public enum Color {
     BLUE,
@@ -8,8 +8,6 @@ public enum Color {
     GREEN;
 
     Color(){
-    }
-    static Color[] values(){
-        return null;
+
     }
 }
