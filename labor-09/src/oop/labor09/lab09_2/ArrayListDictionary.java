@@ -3,6 +3,8 @@ package oop.labor09.lab09_2;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class ArrayListDictionary implements IDictionary{
@@ -18,7 +20,7 @@ public class ArrayListDictionary implements IDictionary{
                 if (line.isEmpty()) {
                     continue;
                 }
-                words.add(line);
+                words.add(line.trim());
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -33,24 +35,18 @@ public class ArrayListDictionary implements IDictionary{
     }
 
     @Override
-    public Boolean add(String o) {
-        for (String a: words) {
-            if(a.equals(o)){
-                return false;
-            }
+    public boolean add(String o) {
+        if(!find(o)){
+            words.add(o);
+            Collections.sort(words);
+            return true;
         }
-        words.add(o);
-        return true;
+        return false;
     }
 
     @Override
-    public Boolean find(String o){
-        for (String a: words) {
-            if(a.equals(o)){
-                return true;
-            }
-        }
-        return false;
+    public boolean find(String o){
+        return Collections.binarySearch(words, o) >= 0;
     }
 
     @Override

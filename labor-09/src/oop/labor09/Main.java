@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        /*DictionaryService service =
+        DictionaryService service =
                 new DictionaryService(DictionaryType.ARRAY_LIST);
         Scanner scanner = new Scanner(System.in);
         while( true ) {
@@ -22,10 +22,10 @@ public class Main {
             }
             System.out.println(" Find(" + word + "): " + service.findWord(word));
         }
-        scanner.close();*/
-        DictionaryService service =
+        scanner.close();
+        DictionaryService service1 =
                 new DictionaryService(DictionaryType.ARRAY_LIST);
         System.out.println("Unknown words from a file: ");
-        System.out.println( service.findWordsFile( "C:\\Users\\SP\\IdeaProjects\\2022.Oop\\labor-09\\src\\valami.txt"));
+        System.out.println( service1.findWordsFile( "C:\\Users\\SP\\IdeaProjects\\2022.Oop\\labor-09\\src\\valami.txt"));
     }
 }
