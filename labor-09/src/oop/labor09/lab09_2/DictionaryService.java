@@ -25,6 +25,7 @@ public class DictionaryService {
                 if (line.isEmpty()) {
                     continue;
                 }
+                line = line.trim();
                 if(!dictionary.find(line)){
                     noWords.add(line);
                 }
