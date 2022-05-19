@@ -20,7 +20,7 @@ public class BAC {
                 String[] items = line.split(" ");
                 int id = Integer.parseInt(items[0].trim());
                 String firstName = items[1].trim();
-                String lastName = items[1].trim();
+                String lastName = items[2].trim();
                 students.put(id, new Student(id, firstName, lastName));
             }
         } catch (FileNotFoundException e) {
@@ -43,5 +43,9 @@ public class BAC {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public HashMap<Integer, Student> getStudents() {
+        return students;
     }
 }

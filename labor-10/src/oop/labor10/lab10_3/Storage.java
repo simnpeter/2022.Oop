@@ -37,20 +37,25 @@ public class Storage {
     }
 
     public void update(String fileName){
+        int updatenum = 0;
         try (Scanner scanner = new Scanner(new File(fileName))) {
             while (scanner.hasNextLine()) {
-                //Collections.binarySearch()
                 String line = scanner.nextLine();
                 if (line.isEmpty()) {
                     continue;
                 }
                 String[] items = line.split(" ");
                 int id = Integer.parseInt(items[0].trim());
-                int amount = Integer.parseInt(items[2].trim());
-                //products;
+                int amount = Integer.parseInt(items[1].trim());
+                int i = Collections.binarySearch(products, new Product(id, "Nan", amount, 0));
+                if(i>=0){
+                    products.get(i).increaseAmount(amount);
+                    ++updatenum;
+                }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        System.out.println("Number of updated products: "+ updatenum);
     }
 }

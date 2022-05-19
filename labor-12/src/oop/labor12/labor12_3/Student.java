@@ -18,7 +18,21 @@ public class Student {
     }
 
     public void addMarks(double mark, Subject subject){
-        marks.add(new Mark(subject, mark));
+        Mark newmark = new Mark(subject, mark);
+        for (Mark o: marks) {
+            if(o.equals(newmark)){
+                return;
+            }
+        }
+        marks.add(newmark);
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public double average(){
@@ -27,6 +41,21 @@ public class Student {
             sum += o.getMark();
         }
         return sum/marks.size();
+    }
+
+    public boolean passed(){
+        for (Mark o : marks) {
+            if(o.getMark() < 5){
+                return false;
+            }
+        }
+        return average() >= 6;
+    }
+
+    @Override
+    public String toString() {
+        return "firstName: " + firstName +
+                "\nlastName: " + lastName + "\n";
     }
 
     @Override
