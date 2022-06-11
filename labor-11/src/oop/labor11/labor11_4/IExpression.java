@@ -27,19 +27,11 @@ public interface IExpression {
                     exp.pop();
                     double veder2 = (double)exp.top();
                     exp.pop();
-                    switch (o){
-                        case "*":
-                            exp.push(veder2*veder1);
-                            break;
-                        case "/":
-                            exp.push(veder2/veder1);
-                            break;
-                        case "-":
-                            exp.push(veder2-veder1);
-                            break;
-                        case "+":
-                            exp.push(veder2+veder1);
-                            break;
+                    switch (o) {
+                        case "*" -> exp.push(veder2 * veder1);
+                        case "/" -> exp.push(veder2 / veder1);
+                        case "-" -> exp.push(veder2 - veder1);
+                        case "+" -> exp.push(veder2 + veder1);
                     }
                 }
                 catch (StackException ex){

@@ -26,8 +26,11 @@ public class DictionaryService {
                 if (line.isEmpty()) {
                     continue;
                 }
-                String[] items = line.split("[,\\ \\:\\;\\.]");
+                String[] items = line.split("[, :;.?!()]");
                 for (String item: items) {
+                    if(item.equals("")){
+                        continue;
+                    }
                     if(!dictionary.find(item.toLowerCase(Locale.ROOT).trim())){
                         noWords.add(item.trim());
                     }
